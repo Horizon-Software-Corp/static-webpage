@@ -420,7 +420,7 @@ html[data-theme="dark"] {
 }
 
 /* Responsive Styles */
-@media (max-width: 768px) {
+@media (max-width: 490px) {
     .details-container {
         grid-template-columns: 1fr;
     }
@@ -438,12 +438,42 @@ html[data-theme="dark"] {
     }
 
     .name-container {
-        flex-direction: column;
-        align-items: flex-start;
+        align-items: baseline;
         gap: 5px;
     }
 
-    .name-secondary {
-        font-size: 0.9rem;
+    /* Scale down all text on business card front to 70% for mobile */
+    .business-card-front .name-primary {
+        font-size: 1.26rem;
+        /* 70% of 1.8rem */
+    }
+
+    .business-card-front .name-secondary {
+        font-size: 0.7rem;
+        /* 70% of 1rem */
+    }
+
+    .business-card-front .position-jp,
+    .business-card-front .position-en {
+        font-size: 0.56rem;
+        /* 70% of 0.8rem */
+    }
+
+    .business-card-front .company-jp,
+    .business-card-front .company-en {
+        font-size: 0.7rem;
+        /* 70% of 1rem */
+    }
+
+    .business-card-front .contact-item {
+        font-size: 0.49rem;
+        /* 70% of 0.7rem */
+    }
+
+    .business-card-front .language-toggle button {
+        font-size: 0.56rem;
+        /* 70% of 0.8rem */
+        padding: 3px 6px;
+        /* Slightly smaller padding for better fit */
     }
 }
