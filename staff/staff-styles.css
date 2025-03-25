@@ -123,8 +123,8 @@ html[data-theme="dark"] {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 25px;
+    margin-bottom: 10px;
 }
 
 .name-section {
@@ -435,6 +435,10 @@ html[data-theme="dark"] {
     .business-card-front,
     .business-card-back {
         max-width: 100%;
+        padding-top: 10px;
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-bottom: 10px;
     }
 
     .name-container {
@@ -444,18 +448,18 @@ html[data-theme="dark"] {
 
     /* Scale down all text on business card front to 70% for mobile */
     .business-card-front .name-primary {
-        font-size: 1.26rem;
+        font-size: 1.40rem;
         /* 70% of 1.8rem */
     }
 
     .business-card-front .name-secondary {
-        font-size: 0.7rem;
+        font-size: 0.8rem;
         /* 70% of 1rem */
     }
 
     .business-card-front .position-jp,
     .business-card-front .position-en {
-        font-size: 0.56rem;
+        font-size: 0.7rem;
         /* 70% of 0.8rem */
     }
 
