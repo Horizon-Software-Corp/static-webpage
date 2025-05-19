@@ -42,16 +42,30 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div id="particles-js"></div>
-        <div class="container">
-            <div class="hero-content">
-                <h1>未来を切り拓く<br>テクノロジーソリューション</h1>
-                <p>金融市場分析と教育AIの力で、新たな可能性を創造します</p>
-                <a href="#contact" class="btn">お問い合わせ</a>
+        <section class="hero" style="height: 70vh; justify-content: center;">
+            <div id="particles-js"></div>
+            <div class="container" style="justify-content: center;">
+                <div class="overlay" style="
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    z-index: 0;
+                    background: rgba(0,0,10,0.4);
+                    width: 100%;
+                    height: 100%;
+                    backdrop-filter: blur(5px);           /* ブラー効果 */
+                    -webkit-backdrop-filter: blur(5px);   /* Safari対応 */">
+                </div>
+                <div class="hero-images" style="display:flex; gap:20px;flex-wrap:wrap; margin:24px 0;"></div>
+                    <img src="img/top_image.png" alt="Horizon Software" class="hero-image" style="width: 114%; z-index: 2;">
+                </div>
+                <div class="hero-content" style="position: absolute;justify-content: center;">
+                    <h1>未来を切り拓く<br>テクノロジーソリューション</h1>
+                    <p>金融市場分析と教育AIの力で、新たな可能性を創造します</p>
+                    <a href="#contact" class="btn">お問い合わせ</a>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
     <!-- Services Section -->
     <section id="services" class="services">
@@ -134,7 +148,7 @@
                         </div>
                     </div>
                     <div style="justify-content: center;">
-                        <a href="#overview" class="btn">AITute を詳しく見る</a>
+                        <a href="/aitute.html" class="btn">AITute を詳しく見る</a>
                     </div>
                 </div>
             </div>
