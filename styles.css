@@ -673,3 +673,62 @@ footer {
         padding: 20px;
     }
 }
+
+/* ===== モーダル画像拡大用 ===== */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    background: rgba(0,0,0,0.7);
+    justify-content: center;
+    align-items: center;
+}
+.modal.open {
+    display: flex;
+}
+.modal-content {
+    max-width: 90vw;
+    max-height: 80vh;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.3);
+    background: #fff;
+    object-fit: contain;
+    animation: modal-fadein 0.2s;
+}
+@keyframes modal-fadein {
+    from { opacity: 0; transform: scale(0.95);}
+    to { opacity: 1; transform: scale(1);}
+}
+.modal-close {
+    position: absolute;
+    top: 24px;
+    right: 36px;
+    color: #fff;
+    font-size: 2.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10000;
+    text-shadow: 0 2px 8px #000;
+    user-select: none;
+    transition: color 0.2s;
+}
+.modal-close:hover {
+    color: #ff5252;
+}
+@media (max-width: 600px) {
+    .modal-content {
+        max-width: 98vw;
+        max-height: 60vh;
+    }
+    .modal-close {
+        top: 12px;
+        right: 16px;
+        font-size: 2rem;
+    }
+}

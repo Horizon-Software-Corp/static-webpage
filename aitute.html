@@ -110,8 +110,8 @@
 
             <!-- Screenshots -->
             <div style="display:flex; flex-wrap:wrap; gap:30px; margin-top:40px; justify-content:center;">
-                <img src="img/aitute/aitute1.png" alt="AITute Screenshot 1" style="max-width:400px; width:100%; border-radius:10px; box-shadow: var(--shadow);">
-                <img src="img/aitute/aitute2.png" alt="AITute Screenshot 2" style="max-width:400px; width:100%; border-radius:10px; box-shadow: var(--shadow);">
+                <img src="img/aitute/aitute1.png" alt="AITute Screenshot 1" class="modal-img" style="max-width:400px; width:100%; border-radius:10px; box-shadow: var(--shadow);">
+                <img src="img/aitute/aitute2.png" alt="AITute Screenshot 2" class="modal-img" style="max-width:400px; width:100%; border-radius:10px; box-shadow: var(--shadow);">
             </div>
 
             <!-- 3 sources -->
@@ -209,6 +209,11 @@
         </div>
     </footer>
 
+    <!-- Modal for image preview -->
+    <div class="modal" id="img-modal">
+        <span class="modal-close" id="modal-close">&times;</span>
+        <img class="modal-content" id="modal-img" src="" alt="">
+    </div>
     <script src="script.js"></script>
 </body>
 </html>

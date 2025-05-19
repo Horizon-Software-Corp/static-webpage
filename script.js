@@ -2,9 +2,11 @@
 const menuToggle = document.querySelector('.menu-toggle');
 const nav = document.querySelector('nav');
 
-menuToggle.addEventListener('click', () => {
-    nav.classList.toggle('active');
-});
+if (menuToggle && nav) {
+    menuToggle.addEventListener('click', () => {
+        nav.classList.toggle('active');
+    });
+}
 
 // Dark Mode Toggle
 const themeToggle = document.getElementById('theme-toggle');
@@ -12,28 +14,30 @@ const htmlElement = document.documentElement;
 
 // Check for saved theme preference or use device preference
 const savedTheme = localStorage.getItem('theme');
-if (savedTheme) {
-    htmlElement.setAttribute('data-theme', savedTheme);
-    themeToggle.checked = savedTheme === 'dark';
-} else {
-    // Check if user prefers dark mode
-    const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (prefersDarkMode) {
-        htmlElement.setAttribute('data-theme', 'dark');
-        themeToggle.checked = true;
-    }
-}
-
-// Toggle theme when switch is clicked
-themeToggle.addEventListener('change', () => {
-    if (themeToggle.checked) {
-        htmlElement.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark');
+if (themeToggle) {
+    if (savedTheme) {
+        htmlElement.setAttribute('data-theme', savedTheme);
+        themeToggle.checked = savedTheme === 'dark';
     } else {
-        htmlElement.setAttribute('data-theme', 'light');
-        localStorage.setItem('theme', 'light');
+        // Check if user prefers dark mode
+        const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (prefersDarkMode) {
+            htmlElement.setAttribute('data-theme', 'dark');
+            themeToggle.checked = true;
+        }
     }
-});
+
+    // Toggle theme when switch is clicked
+    themeToggle.addEventListener('change', () => {
+        if (themeToggle.checked) {
+            htmlElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            htmlElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+        }
+    });
+}
 
 // Close menu when clicking outside
 document.addEventListener('click', (e) => {
@@ -252,3 +256,45 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Listen for scroll to trigger animations
 window.addEventListener('scroll', animateOnScroll);
+
+// ===== モーダル画像拡大用 =====
+document.addEventListener('DOMContentLoaded', () => {
+    const modalImgs = document.querySelectorAll('.modal-img');
+    const modal = document.getElementById('img-modal');
+    const modalImg = document.getElementById('modal-img');
+    const modalClose = document.getElementById('modal-close');
+
+    modalImgs.forEach(img => {
+        img.style.cursor = 'zoom-in';
+        img.addEventListener('click', () => {
+            modal.classList.add('open');
+            modalImg.src = img.src;
+            modalImg.alt = img.alt;
+        });
+    });
+
+    // 閉じるボタン
+    modalClose.addEventListener('click', () => {
+        modal.classList.remove('open');
+        modalImg.src = '';
+        modalImg.alt = '';
+    });
+
+    // モーダル背景クリックで閉じる（画像自体クリックは無視）
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.remove('open');
+            modalImg.src = '';
+            modalImg.alt = '';
+        }
+    });
+
+    // ESCキーで閉じる
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('open')) {
+            modal.classList.remove('open');
+            modalImg.src = '';
+            modalImg.alt = '';
+        }
+    });
+});
