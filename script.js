@@ -241,14 +241,14 @@ document.addEventListener('DOMContentLoaded', () => {
             "retina_detect": true
         });
         
-        // Background particles - slower and more subtle
+        // Background particles - slower and with slightly enhanced visibility
         particlesJS('background-particles', {
             "particles": {
                 "number": {
-                    "value": 40,
+                    "value": 85, // Slightly increased number of particles
                     "density": {
                         "enable": true,
-                        "value_area": 1000
+                        "value_area": 850 // Slightly denser particle distribution
                     }
                 },
                 "color": {
@@ -257,39 +257,39 @@ document.addEventListener('DOMContentLoaded', () => {
                 "shape": {
                     "type": "circle",
                     "stroke": {
-                        "width": 0,
-                        "color": "#000000"
+                        "width": 0.3, // Add a very subtle stroke
+                        "color": particleColor
                     },
                     "polygon": {
                         "nb_sides": 5
                     }
                 },
                 "opacity": {
-                    "value": 0.3,
+                    "value": 0.6, // Slightly increased opacity
                     "random": true,
                     "anim": {
-                        "enable": false,
+                        "enable": true,
                         "speed": 0.5,
-                        "opacity_min": 0.1,
+                        "opacity_min": 0.3, // Slightly higher minimum opacity
                         "sync": false
                     }
                 },
                 "size": {
-                    "value": 2,
+                    "value": 3.5, // Slightly larger particles
                     "random": true,
                     "anim": {
-                        "enable": false,
-                        "speed": 20,
-                        "size_min": 0.1,
+                        "enable": true,
+                        "speed": 1,
+                        "size_min": 0.8, // Slightly larger minimum size
                         "sync": false
                     }
                 },
                 "line_linked": {
                     "enable": true,
-                    "distance": 200,
+                    "distance": 160, // Slightly shorter distance for more connections
                     "color": particleColor,
-                    "opacity": 0.2,
-                    "width": 0.5
+                    "opacity": 0.4, // Slightly increased line visibility
+                    "width": 1 // Slightly thicker lines
                 },
                 "move": {
                     "enable": true,
