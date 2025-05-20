@@ -32,9 +32,23 @@ if (themeToggle) {
         if (themeToggle.checked) {
             htmlElement.setAttribute('data-theme', 'dark');
             localStorage.setItem('theme', 'dark');
+            
+            // Update background particles color for dark theme if they exist
+            if (typeof pJSDom !== 'undefined' && pJSDom.length > 1) {
+                pJSDom[1].pJS.particles.color.value = "#4d94ff";
+                pJSDom[1].pJS.particles.line_linked.color = "#4d94ff";
+                pJSDom[1].pJS.fn.particlesRefresh();
+            }
         } else {
             htmlElement.setAttribute('data-theme', 'light');
             localStorage.setItem('theme', 'light');
+            
+            // Update background particles color for light theme if they exist
+            if (typeof pJSDom !== 'undefined' && pJSDom.length > 1) {
+                pJSDom[1].pJS.particles.color.value = "#808080";
+                pJSDom[1].pJS.particles.line_linked.color = "#808080";
+                pJSDom[1].pJS.fn.particlesRefresh();
+            }
         }
     });
 }
@@ -117,6 +131,10 @@ if (contactForm) {
 // Particles.js Configuration
 document.addEventListener('DOMContentLoaded', () => {
     if (typeof particlesJS !== 'undefined') {
+        // Get current theme for background particles color
+        const isDarkTheme = htmlElement.getAttribute('data-theme') === 'dark';
+        const particleColor = isDarkTheme ? "#4d94ff" : "#808080";
+        // Hero particles
         particlesJS('particles-js', {
             "particles": {
                 "number": {
@@ -222,6 +240,113 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             "retina_detect": true
         });
+        
+        // Background particles - slower and more subtle
+        particlesJS('background-particles', {
+            "particles": {
+                "number": {
+                    "value": 40,
+                    "density": {
+                        "enable": true,
+                        "value_area": 1000
+                    }
+                },
+                "color": {
+                    "value": particleColor
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                    "polygon": {
+                        "nb_sides": 5
+                    }
+                },
+                "opacity": {
+                    "value": 0.3,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 0.5,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 2,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 20,
+                        "size_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 200,
+                    "color": particleColor,
+                    "opacity": 0.2,
+                    "width": 0.5
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 0.5,
+                    "direction": "none",
+                    "random": true,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": false,
+                        "mode": "grab"
+                    },
+                    "onclick": {
+                        "enable": false,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 140,
+                        "line_linked": {
+                            "opacity": 0.5
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 40,
+                        "duration": 2,
+                        "opacity": 8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
+        });
     }
 });
 
@@ -264,37 +389,40 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalImg = document.getElementById('modal-img');
     const modalClose = document.getElementById('modal-close');
 
-    modalImgs.forEach(img => {
-        img.style.cursor = 'zoom-in';
-        img.addEventListener('click', () => {
-            modal.classList.add('open');
-            modalImg.src = img.src;
-            modalImg.alt = img.alt;
+    // Only set up modal functionality if all required elements exist
+    if (modal && modalImg && modalClose && modalImgs.length > 0) {
+        modalImgs.forEach(img => {
+            img.style.cursor = 'zoom-in';
+            img.addEventListener('click', () => {
+                modal.classList.add('open');
+                modalImg.src = img.src;
+                modalImg.alt = img.alt;
+            });
         });
-    });
 
-    // 閉じるボタン
-    modalClose.addEventListener('click', () => {
-        modal.classList.remove('open');
-        modalImg.src = '';
-        modalImg.alt = '';
-    });
-
-    // モーダル背景クリックで閉じる（画像自体クリックは無視）
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
+        // 閉じるボタン
+        modalClose.addEventListener('click', () => {
             modal.classList.remove('open');
             modalImg.src = '';
             modalImg.alt = '';
-        }
-    });
+        });
 
-    // ESCキーで閉じる
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.classList.contains('open')) {
-            modal.classList.remove('open');
-            modalImg.src = '';
-            modalImg.alt = '';
-        }
-    });
+        // モーダル背景クリックで閉じる（画像自体クリックは無視）
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('open');
+                modalImg.src = '';
+                modalImg.alt = '';
+            }
+        });
+
+        // ESCキーで閉じる
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('open')) {
+                modal.classList.remove('open');
+                modalImg.src = '';
+                modalImg.alt = '';
+            }
+        });
+    }
 });
