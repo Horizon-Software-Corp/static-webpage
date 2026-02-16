@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新事業について | 株式会社 Horizon Software</title>
+    <link rel="icon" href="../img/favicon.png" type="image/png">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        .article-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .article-header {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            line-height: 1.3;
+        }
+
+        .article-lead {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-color);
+            opacity: 0.85;
+        }
+
+        /* Background context section */
+        .context-section {
+            background-color: var(--card-bg);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            margin-bottom: 50px;
+        }
+
+        .context-section h2 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .context-section p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .context-section ul {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .context-section li {
+            margin-bottom: 8px;
+            line-height: 1.7;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(0,102,204,0.08), rgba(0,179,230,0.08));
+            border-left: 4px solid var(--accent-color);
+            padding: 20px 25px;
+            border-radius: 0 8px 8px 0;
+            margin: 25px 0;
+        }
+
+        html[data-theme="dark"] .highlight-box {
+            background: linear-gradient(135deg, rgba(77,148,255,0.1), rgba(51,204,255,0.1));
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+
+        /* Business detail cards */
+        .biz-detail {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            margin-bottom: 40px;
+            overflow: hidden;
+            scroll-margin-top: 100px;
+        }
+
+        .biz-detail-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 25px 35px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .biz-detail-header i {
+            font-size: 2rem;
+        }
+
+        .biz-detail-header .biz-number {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .biz-detail-header h2 {
+            font-size: 1.6rem;
+            margin: 0;
+            color: white;
+        }
+
+        .biz-detail-body {
+            padding: 35px;
+        }
+
+        .biz-detail-body h3 {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin: 30px 0 12px;
+        }
+
+        .biz-detail-body h3:first-child {
+            margin-top: 0;
+        }
+
+        .biz-detail-body p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .biz-detail-body ul {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .biz-detail-body li {
+            margin-bottom: 8px;
+            line-height: 1.7;
+        }
+
+        .biz-keyword {
+            display: inline-block;
+            background-color: var(--gray-bg);
+            color: var(--primary-color);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+
+        .biz-keywords {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Navigation between sections */
+        .biz-nav {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+
+        .biz-nav a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 20px;
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            font-weight: 500;
+            font-size: 0.95rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .biz-nav a:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .biz-nav a i {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 40px;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .back-link i {
+            margin-right: 5px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 576px) {
+            .article-title {
+                font-size: 1.8rem;
+            }
+
+            .context-section,
+            .biz-detail-body {
+                padding: 25px 20px;
+            }
+
+            .biz-detail-header {
+                padding: 20px;
+            }
+
+            .biz-detail-header h2 {
+                font-size: 1.3rem;
+            }
+
+            .biz-nav {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html"><h1>Horizon Software</h1></a>
+            </div>
+            <div class="theme-toggle">
+                <i class="fas fa-sun"></i>
+                <div class="toggle-switch">
+                    <input type="checkbox" id="theme-toggle">
+                    <label for="theme-toggle"></label>
+                </div>
+                <i class="fas fa-moon"></i>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html#about">会社情報</a></li>
+                    <li><a href="../index.html#services">事業紹介</a></li>
+                    <li><a href="../index.html#new-business">新事業</a></li>
+                    <li><a href="../index.html#news">お知らせ</a></li>
+                    <li><a href="../index.html#careers">採用情報</a></li>
+                    <li><a href="../index.html#contact">お問い合わせ</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section class="article-section" style="padding-top: 120px;">
+        <div class="article-container">
+
+            <!-- Page Header -->
+            <div class="article-header">
+                <h1 class="article-title">新事業について</h1>
+                <p class="article-lead">Hyperliquidのインフラを活用・参考にして、新しい取引所・取引システムを構築し、<br>既存金融では実現できなかった商品・サービスを提供します。</p>
+            </div>
+
+            <!-- Quick Navigation -->
+            <div class="biz-nav">
+                <a href="#fund"><i class="fas fa-search-dollar"></i> 透明性の投資信託</a>
+                <a href="#amm"><i class="fas fa-exchange-alt"></i> マーケットメイクの金融商品化</a>
+                <a href="#realestate"><i class="fas fa-building"></i> 不動産のオンチェーン化</a>
+                <a href="#options"><i class="fas fa-shield-alt"></i> オンチェーン型オプション</a>
+            </div>
+
+            <!-- Background: Hyperliquid & On-chain finance -->
+            <div class="context-section">
+                <h2>背景: 先端金融の変化</h2>
+                <p>伝統的な金融では、株式・債券・コモディティ・不動産・外貨などの取引には実物資産や証券による裏付けが必須でした。しかし近年、オンチェーン技術の進展により、裏付け資産なしで取引所での取引が可能になりつつあります。</p>
+                <p>日本でも実証が始まっており、2026年2月13日には「金融相、ステーブルコインで株売買『画期的』」として大手証券などの支援が発表されました。</p>
+
+                <h2>Hyperliquidとは</h2>
+                <p>Hyperliquidは、オンチェーンで動作する高性能なデリバティブ取引所です。中央集権型取引所（CEX）の高速性と分散型取引所（DEX）の透明性を両立することを目的として設計されています。</p>
+                <ul>
+                    <li>独自のレイヤー1チェーン上で稼働</li>
+                    <li>完全オンチェーンのオーダーブック方式</li>
+                    <li>perpetual（無期限先物）を中心としたデリバティブ取引</li>
+                    <li>板情報・約定履歴・清算ロジックがすべて確認可能 — 全ユーザの資産状況・ポジション・注文が見える</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <p>私たちの具体的な目標: Hyperliquidのインフラを活用・参考にして、新しい取引所・取引システムを構築する。既存金融で取引されている商品（株式、コモディティ、外貨 等）と、既存市場では提供されにくい商品（マーケットメイク、国債、オプション、土地 等）の双方を実装します。</p>
+                </div>
+            </div>
+
+            <!-- Business 1: Transparent Fund -->
+            <div id="fund" class="biz-detail">
+                <div class="biz-detail-header">
+                    <i class="fas fa-search-dollar"></i>
+                    <div>
+                        <span class="biz-number">新事業 1</span>
+                        <h2>完全な透明性の投資信託</h2>
+                    </div>
+                </div>
+                <div class="biz-detail-body">
+                    <h3>概要</h3>
+                    <p>従来の投資信託では、運用の中身が投資家に対して不透明であることが一般的です。どの銘柄にどれだけ投資しているのか、いつ売買が行われたのか、手数料はどこにかかっているのか — これらの情報は通常、限定的にしか開示されません。</p>
+                    <p>本事業では、オンチェーン上ですべての運用状況を公開し、投資家が資産の流れをリアルタイムで確認できる、完全に透明な投資信託（Transparent On-Chain Fund）を実現します。</p>
+
+                    <h3>特徴</h3>
+                    <ul>
+                        <li><strong>完全な透明性:</strong> ポートフォリオ構成、取引履歴、手数料の流れがすべてオンチェーンで確認可能</li>
+                        <li><strong>リアルタイム監査:</strong> 従来のような四半期ごとの報告を待つ必要がなく、いつでも運用状況を検証できる</li>
+                        <li><strong>スマートコントラクトによる運用ルールの強制:</strong> 運用方針の逸脱をプログラムレベルで防止</li>
+                        <li><strong>低い参入障壁:</strong> トークン化により少額から投資可能</li>
+                    </ul>
+
+                    <h3>解決する課題</h3>
+                    <p>既存の投資信託における情報の非対称性 — 運用者と投資家の間にある情報格差を技術的に解消し、投資家の信頼性を根本から変えるアプローチです。</p>
+
+                    <div class="biz-keywords">
+                        <span class="biz-keyword">On-Chain Fund</span>
+                        <span class="biz-keyword">透明性</span>
+                        <span class="biz-keyword">スマートコントラクト</span>
+                        <span class="biz-keyword">リアルタイム監査</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Business 2: AMM Market Making -->
+            <div id="amm" class="biz-detail">
+                <div class="biz-detail-header">
+                    <i class="fas fa-exchange-alt"></i>
+                    <div>
+                        <span class="biz-number">新事業 2</span>
+                        <h2>マーケットメイクの金融商品化</h2>
+                    </div>
+                </div>
+                <div class="biz-detail-body">
+                    <h3>概要</h3>
+                    <p>当社の既存事業であるマーケットメイクは、高度なアルゴリズムと数理モデルを用いて安定的な収益を生み出してきました。本事業では、このマーケットメイク戦略自体を金融商品としてパッケージ化し、誰でもアクセスできる形で提供します。</p>
+
+                    <h3>仕組み</h3>
+                    <p>AMM（Automated Market Maker / 自動マーケットメイカー）を基盤に、流動性提供者が資金をプールに預け入れることで、自動的にマーケットメイクに参加できる仕組みを構築します。</p>
+                    <ul>
+                        <li><strong>流動性プール:</strong> 参加者が資金を預け入れ、プール全体でマーケットメイクを実行</li>
+                        <li><strong>収益分配:</strong> スプレッド収益と取引所リベートが自動的にプール参加者に分配</li>
+                        <li><strong>リスク管理:</strong> 当社の既存の数理モデル・アルゴリズムを活用し、ポジションリスクを制御</li>
+                    </ul>
+
+                    <h3>既存事業との関係</h3>
+                    <p>当社はすでにマーケットメイク事業で実績と技術基盤を持っています。この新事業は、その知見とシステムを拡張し、より多くの参加者が流動性提供の恩恵を受けられるようにするものです。</p>
+
+                    <div class="biz-keywords">
+                        <span class="biz-keyword">AMM</span>
+                        <span class="biz-keyword">流動性プール</span>
+                        <span class="biz-keyword">マーケットメイク</span>
+                        <span class="biz-keyword">収益分配</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Business 3: Real Estate Tokenization -->
+            <div id="realestate" class="biz-detail">
+                <div class="biz-detail-header">
+                    <i class="fas fa-building"></i>
+                    <div>
+                        <span class="biz-number">新事業 3</span>
+                        <h2>土地・不動産のオンチェーン化</h2>
+                    </div>
+                </div>
+                <div class="biz-detail-body">
+                    <h3>概要</h3>
+                    <p>不動産は、最も参入障壁の高い資産クラスの一つです。高額な最低投資額、複雑な手続き、流動性の低さ — これらの壁が、多くの投資家を不動産市場から遠ざけています。</p>
+                    <p>本事業では、土地・不動産をトークン化してオンチェーンで取引可能にし、少額からの投資と高い流動性を実現します。</p>
+
+                    <h3>トークン化の仕組み</h3>
+                    <ul>
+                        <li><strong>不動産の証券化:</strong> 物件の権利をトークンとして分割し、ブロックチェーン上に記録</li>
+                        <li><strong>少額投資:</strong> トークン単位での売買により、数万円から不動産投資が可能に</li>
+                        <li><strong>二次流通:</strong> トークンの取引所売買により、従来の不動産にはなかった流動性を提供</li>
+                        <li><strong>賃料分配:</strong> スマートコントラクトにより、賃料収入が自動的にトークン保有者へ分配</li>
+                    </ul>
+
+                    <h3>解決する課題</h3>
+                    <p>既存の不動産投資における「高い参入資産要件」と「低い流動性」という二つの構造的課題を、トークン化技術によって根本から解消します。これは当社のミッション「閉ざされた金融へのアクセスをひらく」を体現する事業です。</p>
+
+                    <div class="biz-keywords">
+                        <span class="biz-keyword">不動産トークン化</span>
+                        <span class="biz-keyword">少額投資</span>
+                        <span class="biz-keyword">流動性</span>
+                        <span class="biz-keyword">賃料分配</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Business 4: On-chain Options -->
+            <div id="options" class="biz-detail">
+                <div class="biz-detail-header">
+                    <i class="fas fa-shield-alt"></i>
+                    <div>
+                        <span class="biz-number">新事業 4</span>
+                        <h2>担保完全オンチェーン型オプション</h2>
+                    </div>
+                </div>
+                <div class="biz-detail-body">
+                    <h3>概要</h3>
+                    <p>オプション取引は、リスクヘッジや高度な投資戦略に不可欠なデリバティブ商品です。しかし従来のオプション取引では、担保管理がブローカーや取引所に依存しており、カウンターパーティリスクや不透明性の問題がありました。</p>
+                    <p>本事業では、担保の管理をすべてオンチェーンで行うオプション取引を実装し、透明性と安全性を両立した新しいデリバティブ商品を提供します。</p>
+
+                    <h3>特徴</h3>
+                    <ul>
+                        <li><strong>担保の完全オンチェーン管理:</strong> 担保資産の状況がいつでも検証可能で、不正な流用リスクを排除</li>
+                        <li><strong>自動清算:</strong> スマートコントラクトによる清算ロジックで、カウンターパーティリスクを最小化</li>
+                        <li><strong>透明な価格形成:</strong> オーダーブック・約定履歴がすべてオンチェーンで確認可能</li>
+                        <li><strong>柔軟な商品設計:</strong> Hyperliquidインフラ上で多様なオプション商品を構築可能</li>
+                    </ul>
+
+                    <h3>既存市場との違い</h3>
+                    <p>既存のオプション市場は機関投資家向けの設計が中心で、個人投資家にとってはアクセスが困難です。完全オンチェーン化により、担保管理の透明性を保証しつつ、より幅広い投資家がオプション取引を利用できる環境を構築します。</p>
+
+                    <div class="biz-keywords">
+                        <span class="biz-keyword">オプション</span>
+                        <span class="biz-keyword">オンチェーン担保</span>
+                        <span class="biz-keyword">自動清算</span>
+                        <span class="biz-keyword">デリバティブ</span>
+                    </div>
+                </div>
+            </div>
+
+            <a href="../index.html#new-business" class="back-link"><i class="fas fa-arrow-left"></i> トップページに戻る</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>Horizon Software</h2>
+                </div>
+                <div class="footer-links">
+                    <ul>
+                        <li><a href="../index.html#about">会社情報</a></li>
+                        <li><a href="../index.html#services">事業紹介</a></li>
+                        <li><a href="../index.html#new-business">新事業</a></li>
+                        <li><a href="../index.html#news">お知らせ</a></li>
+                        <li><a href="../index.html#careers">採用情報</a></li>
+                        <li><a href="../index.html#contact">お問い合わせ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 株式会社 Horizon Software. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

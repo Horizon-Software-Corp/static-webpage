@@ -972,6 +972,27 @@ footer {
 .new-biz-card p {
     font-size: 0.95rem;
     line-height: 1.7;
+    color: var(--text-color);
+}
+
+a.new-biz-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.new-biz-more {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--primary-color);
+    transition: var(--transition);
+}
+
+a.new-biz-card:hover .new-biz-more {
+    text-decoration: underline;
 }
 
 /* Careers Section - Updated */
