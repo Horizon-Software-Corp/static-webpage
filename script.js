@@ -352,7 +352,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Animation on scroll (simple version)
 const animateOnScroll = () => {
-    const elements = document.querySelectorAll('.service-card, .info-item, .career-card, .news-card');
+    const elements = document.querySelectorAll('.service-card, .info-item, .career-card, .news-card, .vision-block, .vision-founder, .timeline-item, .new-biz-card, .careers-common');
     
     elements.forEach(element => {
         const elementPosition = element.getBoundingClientRect().top;
@@ -367,7 +367,7 @@ const animateOnScroll = () => {
 
 // Set initial state for animation
 document.addEventListener('DOMContentLoaded', () => {
-    const elements = document.querySelectorAll('.service-card, .info-item, .career-card, .news-card');
+    const elements = document.querySelectorAll('.service-card, .info-item, .career-card, .news-card, .vision-block, .vision-founder, .timeline-item, .new-biz-card, .careers-common');
     
     elements.forEach(element => {
         element.style.opacity = '0';
